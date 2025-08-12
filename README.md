@@ -5,13 +5,13 @@
  This repository accompanies the manuscript **Reliable option pricing through deep learning: An anomaly score-based approach.**
 We detect irregular observations in option data using Isolation Forest and incorporate the resulting anomaly scores as weights in the neural network loss. Rather than discarding data, we down-weight low-reliability samples, which improves robustness especially for short-maturity and low-liquidity contracts.
 
-## +**Key ideas**
+## **Key ideas**
 
- __Treat anomaly score as an inverse reliability signal and inject it into training via a weighted MSE__
+ *Treat anomaly score as an inverse reliability signal and inject it into training via a weighted MSE*
 
- __Preserve data coverage (no wholesale deletion) while mitigating the influence of stale/noisy quotes__
+ *Preserve data coverage (no wholesale deletion) while mitigating the influence of stale/noisy quotes*
 
- __Aligns with market intuition: anomalies concentrate at very short/long maturities, thin liquidity, and extreme moneyness__
+ *Aligns with market intuition: anomalies concentrate at very short/long maturities, thin liquidity, and extreme moneyness*
 
 
 ## 2. What’s in this repo
