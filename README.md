@@ -2,22 +2,27 @@
 
 ## 1. Overview
 
- **딥러닝 기반 옵션 가격 결정 모델** : 금융 시장의 노이즈가 많은 옵션 데이터에서 Isolation Forest 알고리즘으로 이상치를 탐지하고, 이를 신경망 학습에 가중치로 활용하여 더 정확하고 견고한 옵션 가격 예측 모델을 구축
+ This repository accompanies the manuscript **Reliable option pricing through deep learning: An anomaly score-based approach.**
+We detect irregular observations in option data using Isolation Forest and incorporate the resulting anomaly scores as weights in the neural network loss. Rather than discarding data, we down-weight low-reliability samples, which improves robustness—especially for short-maturity and low-liquidity contracts.
 
-- 데이터를 단순히 삭제하는 대신, 신뢰도에 따른 가중치 부여 방식 도입
-- Isolation Forest로 계산한 이상치 점수를 손실함수에 직접 통합하여 신뢰할 수 있는 데이터에 더 큰 영향력 부여
-- 특히 유동성이 낮거나 만기가 짧은 옵션 계약에서 빈번한 이상 관측치 문제 해결
+**Key ideas**
 
-## 2. 의도
+Treat anomaly score as an inverse reliability signal and inject it into training via a weighted MSE.
 
-### 2.1 문제인식
+Preserve data coverage (no wholesale deletion) while mitigating the influence of stale/noisy quotes.
 
-- 전통적인 Black-Scholes 모델의 한계 (상수 변동성, 로그정규분포 가정 등)
-- 실제 금융 시장 데이터의 노이즈, 높은 변동성, 이상치 문제
-- 특히 단기 만료 또는 거래량이 적은 옵션에서 발생하는 비정상적 관측값들이 모델 훈련에 미치는 악영향
+Aligns with market intuition: anomalies concentrate at very short/long maturities, thin liquidity, and extreme moneyness.
 
-### 2.2 해결 방안 제시
 
-- 데이터를 완전히 삭제하는 대신, 신뢰도 기반 가중 학습 방식 도입
-- 각 데이터 샘플의 기여도를 이상치 점수에 따라 조절하여 더 견고한 학습 실현
-- 금융 도메인 지식과 일치하는 해석 가능한 가중치 학습
+## 2. What’s in this repo
+### 2.1 ano_nn_analysis.py 
+  - Core training/evaluation script (baseline MLP vs. anomaly-weighted MLP).
+
+### 2.2 anoNN_different_option_characteristics.ipynb 
+  - Reproduces results by moneyness, time-to-maturity, and volume buckets.
+
+### 2.3 anoNN_rolling_timeseries_splits.ipynb 
+  - Rolling train/test splits to assess robustness over time.
+
+### 2.4 data_visualize.ipynb 
+  - Basic EDA and plotting utilities.
