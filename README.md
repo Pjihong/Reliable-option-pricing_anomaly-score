@@ -7,11 +7,11 @@ We detect irregular observations in option data using Isolation Forest and incor
 
 ## **Key ideas**
 
- + Treat anomaly score as an inverse reliability signal and inject it into training via a weighted MSE.
+ __Treat anomaly score as an inverse reliability signal and inject it into training via a weighted MSE__
 
- + Preserve data coverage (no wholesale deletion) while mitigating the influence of stale/noisy quotes.
+ __Preserve data coverage (no wholesale deletion) while mitigating the influence of stale/noisy quotes__
 
- + Aligns with market intuition: anomalies concentrate at very short/long maturities, thin liquidity, and extreme moneyness.
+ __Aligns with market intuition: anomalies concentrate at very short/long maturities, thin liquidity, and extreme moneyness__
 
 
 ## 2. What’s in this repo
