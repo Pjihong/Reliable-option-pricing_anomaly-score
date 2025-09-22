@@ -1,5 +1,8 @@
 # Reliable Option Pricing Anomaly Score
 
+[Networks and Heterogeneous Media, 2025, Volume 20, Issue 3: 987–1009](https://www.aimspress.com/article/doi/10.3934/nhm.2025043)  
+DOI: [10.3934/nhm.2025043](https://doi.org/10.3934/nhm.2025043)
+
 ## 1. Overview
 
  This repository accompanies the manuscript **Reliable option pricing through deep learning: An anomaly score-based approach.**
